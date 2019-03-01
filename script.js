@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // get horoscope logos
 
 const signs = [
@@ -36,10 +37,29 @@ const signs = [
   { sign: 'Pisces', url: 'https://cdn.pixabay.com/photo/2015/05/09/07/32/fish-759384_960_720.jpg' },
 ];
 
+const addText = (text = null) => {
+  console.log(`this is the text for each star sign: ${text}`);
+};
+
 // dynamically create images and handleClick event
 
+let signName = null;
+
 const handleClick = (event) => {
-  console.log(event.target);
+  signName = event.target.alt;
+  const api = 'https://www.horoscopes-and-astrology.com/json';
+  fetch(api)
+    .then(response => response.json())
+    .then((data) => {
+      const { dailyhoroscope } = data;
+      const signKeys = Object.keys(dailyhoroscope);
+      signKeys.forEach((sign) => {
+        if (sign === signName) {
+          addText(dailyhoroscope[sign]);
+        }
+      });
+    })
+    .catch(error => console.error(`Error message: ${error}`));
 };
 
 signs.forEach(({ url, sign }) => {
