@@ -1,0 +1,17 @@
+{
+  "name": "rr-test",
+  "version": "1.0.0",
+  "description": "test to fetch horoscope data from api and display in html",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "johno",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
+}
