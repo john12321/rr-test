@@ -37,12 +37,17 @@ const signs = [
   { sign: 'Pisces', url: 'https://cdn.pixabay.com/photo/2015/05/09/07/32/fish-759384_960_720.jpg' },
 ];
 
-const addText = (text = null) => {
-  console.log(`this is the text for each star sign: ${text}`);
+// add horoscope text to html onClick
+const addText = (text = null, thisSign = null) => {
+  const textSection = document.getElementById('details');
+  const textHtml = `
+  <h3>Today's horoscope for ${thisSign}...</h3>
+  <p>${text}</p>
+  `;
+  textSection.innerHTML = textHtml;
 };
 
 // dynamically create images and handleClick event
-
 let signName = null;
 
 const handleClick = (event) => {
@@ -55,7 +60,7 @@ const handleClick = (event) => {
       const signKeys = Object.keys(dailyhoroscope);
       signKeys.forEach((sign) => {
         if (sign === signName) {
-          addText(dailyhoroscope[sign]);
+          addText(dailyhoroscope[sign], signName);
         }
       });
     })
