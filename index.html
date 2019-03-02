@@ -14,14 +14,33 @@
     />
   </head>
   <body>
-    <h1>Psychic John's Daily Horoscope</h1>
+    <nav
+      id="nav"
+      class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top"
+    >
+      <div class="header">
+        <h1>Psychic John</h1>
+        <h2 id="subheader" class="font-weight-bold">
+          <div class="font-weight-bold" id="date"></div>
+          Horoscope
+        </h2>
+      </div>
+      <div id="form" class="col-sm">
+        <form>
+          <input
+            id="input"
+            type="text"
+            placeholder="Type your name then click your star sign!"
+            onblur="this.value='' "
+          />
+        </form>
+      </div>
+      <div id="date"></div>
+    </nav>
     <div class="container">
       <div class="row">
-        <div id="form" class="col-sm">
-          form to go here
-        </div>
-        <div id="signs" class="col-sm"></div>
         <div id="details" class="col-sm"></div>
+        <div id="signs" class="col-sm"></div>
       </div>
     </div>
     <script
