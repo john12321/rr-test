@@ -72,7 +72,6 @@ formInput.onkeypress = (e) => {
 // add horoscope text to html onClick
 const addText = (text, thisSign) => {
   const textSection = document.getElementById('details');
-  // <img class="card-img-top" src="" alt="Card image cap">
   const textHtml = `
   <div class="card">
   <div class="card-body">
