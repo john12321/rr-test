@@ -72,7 +72,6 @@ formInput.onkeypress = (e) => {
 // add horoscope text to html onClick
 const addText = (text, thisSign) => {
   const textSection = document.getElementById('details');
-  // <img class="card-img-top" src="" alt="Card image cap">
   const textHtml = `
   <div class="card">
   <div class="card-body">
@@ -94,23 +93,6 @@ const addText = (text, thisSign) => {
 // dynamically create images and handleClick event
 let signName = null;
 
-const handleClick = (event) => {
-  signName = event.target.alt;
-  const api = 'https://www.horoscopes-and-astrology.com/json';
-  fetch(api)
-    .then(response => response.json())
-    .then((data) => {
-      const { dailyhoroscope } = data;
-      const signKeys = Object.keys(dailyhoroscope);
-      signKeys.forEach((sign) => {
-        if (sign === signName) {
-          addText(dailyhoroscope[sign], signName);
-        }
-      });
-    })
-    .catch(error => console.error(`Error message: ${error}`));
-};
-
 const fetchHoroscope = (name) => {
   const api = 'https://www.horoscopes-and-astrology.com/json';
   fetch(api)
@@ -125,6 +107,11 @@ const fetchHoroscope = (name) => {
       });
     })
     .catch(error => console.error(`Error message: ${error}`));
+};
+
+const handleClick = (event) => {
+  signName = event.target.alt;
+  fetchHoroscope(signName);
 };
 
 signs.forEach(({ url, sign }) => {
