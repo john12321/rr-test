@@ -94,23 +94,6 @@ const addText = (text, thisSign) => {
 // dynamically create images and handleClick event
 let signName = null;
 
-const handleClick = (event) => {
-  signName = event.target.alt;
-  const api = 'https://www.horoscopes-and-astrology.com/json';
-  fetch(api)
-    .then(response => response.json())
-    .then((data) => {
-      const { dailyhoroscope } = data;
-      const signKeys = Object.keys(dailyhoroscope);
-      signKeys.forEach((sign) => {
-        if (sign === signName) {
-          addText(dailyhoroscope[sign], signName);
-        }
-      });
-    })
-    .catch(error => console.error(`Error message: ${error}`));
-};
-
 const fetchHoroscope = (name) => {
   const api = 'https://www.horoscopes-and-astrology.com/json';
   fetch(api)
@@ -125,6 +108,11 @@ const fetchHoroscope = (name) => {
       });
     })
     .catch(error => console.error(`Error message: ${error}`));
+};
+
+const handleClick = (event) => {
+  signName = event.target.alt;
+  fetchHoroscope(signName);
 };
 
 signs.forEach(({ url, sign }) => {
