@@ -1,61 +1,71 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-return-assign */
 /* eslint-disable no-console */
 // get horoscope logos
 
 const signs = [
   {
     sign: 'Aries',
-    url: 'https://cdn.pixabay.com/photo/2015/05/09/07/32/aries-759382_960_720.jpg',
+    url: 'https://astrology.com.au/wp-content/uploads/twelve_zodiac_icons/aries.png?x93593',
   },
   {
     sign: 'Taurus',
-    url: 'https://cdn.pixabay.com/photo/2015/05/09/07/32/bull-759381_960_720.jpg',
+    url: 'https://astrology.com.au/wp-content/uploads/twelve_zodiac_icons/taurus.png?x93593',
   },
   {
     sign: 'Gemini',
-    url: 'https://cdn.pixabay.com/photo/2015/05/09/07/30/twins-759375_960_720.jpg',
+    url: 'https://astrology.com.au/wp-content/uploads/twelve_zodiac_icons/gemini.png?x93593',
   },
   {
     sign: 'Cancer',
-    url: 'https://cdn.pixabay.com/photo/2015/05/09/07/31/cancer-759378_960_720.jpg',
+    url: 'https://astrology.com.au/wp-content/uploads/twelve_zodiac_icons/cancer.png?x93593',
   },
   {
     sign: 'Leo',
-    url: 'https://cdn.pixabay.com/photo/2015/05/09/07/30/lion-759374_960_720.jpg',
+    url: 'https://astrology.com.au/wp-content/uploads/twelve_zodiac_icons/leo.png?x93593',
   },
   {
     sign: 'Virgo',
-    url: 'https://cdn.pixabay.com/photo/2015/05/09/07/31/virgin-759376__340.jpg',
+    url: 'https://astrology.com.au/wp-content/uploads/twelve_zodiac_icons/virgo.png?x93593',
   },
   {
     sign: 'Libra',
-    url: 'https://cdn.pixabay.com/photo/2015/05/09/07/31/horizontal-759380_960_720.jpg',
+    url: 'https://astrology.com.au/wp-content/uploads/twelve_zodiac_icons/libra.png?x93593',
   },
   {
     sign: 'Scorpio',
-    url: 'https://cdn.pixabay.com/photo/2015/05/09/07/31/scorpio-759377_960_720.jpg',
+    url: 'https://astrology.com.au/wp-content/uploads/twelve_zodiac_icons/scorpio.png?x93593',
   },
   {
     sign: 'Sagittarius',
-    url: 'https://cdn.pixabay.com/photo/2015/05/09/07/30/contactors-759373_960_720.jpg',
+    url: 'https://astrology.com.au/wp-content/uploads/twelve_zodiac_icons/sagittarius.png?x93593',
   },
   {
     sign: 'Capricorn',
-    url: 'https://cdn.pixabay.com/photo/2015/05/09/07/31/capricorn-759379_960_720.jpg',
+    url: 'https://astrology.com.au/wp-content/uploads/twelve_zodiac_icons/capricorn.png?x93593',
   },
   {
     sign: 'Aquarius',
-    url: 'https://cdn.pixabay.com/photo/2015/05/09/07/32/aquarius-759383_960_720.jpg',
+    url: 'https://astrology.com.au/wp-content/uploads/twelve_zodiac_icons/aquarius.png?x93593',
   },
   {
     sign: 'Pisces',
-    url: 'https://cdn.pixabay.com/photo/2015/05/09/07/32/fish-759384_960_720.jpg',
+    url: 'https://astrology.com.au/wp-content/uploads/twelve_zodiac_icons/pisces.png?x93593',
   },
 ];
 
 let username = '';
 
+// added some basic validation for input.
 const handleChange = (value) => {
-  username = value;
+  if (/^[a-zA-Z]{2,30}/.test(value) && value.length > 1) {
+    username = value;
+  } else {
+    const errMsg = 'Your name is needed for a personalised horoscope - at least 2 letters long - with no numbers or special characters';
+    document.getElementById('err-msg').innerHTML = errMsg;
+    setTimeout(() => (document.getElementById('err-msg').innerHTML = ''), 3500);
+    username = '';
+  }
 };
 
 // store username onChange and prevent submit on enter

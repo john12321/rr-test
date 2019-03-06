@@ -21,7 +21,7 @@
       <div class="header">
         <h1>Psychic John</h1>
         <h2 id="subheader" class="font-weight-bold">
-          <div class="font-weight-bold" id="date"></div>
+          <span class="font-weight-bold" id="date"></span>
           Horoscope
         </h2>
       </div>
@@ -33,9 +33,9 @@
             placeholder="Type your name then click your star sign!"
             onblur="this.value='' "
           />
+          <span id="err-msg"> </span>
         </form>
       </div>
-      <div id="date"></div>
     </nav>
     <div class="container">
       <div class="row">
